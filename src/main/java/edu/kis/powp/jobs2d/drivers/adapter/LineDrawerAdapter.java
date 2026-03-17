@@ -54,6 +54,15 @@ public class LineDrawerAdapter extends DrawPanelController implements Job2dDrive
 
     @Override
     public String toString() {
-        return "Drawer driver";
+        switch (lineType) {
+            case BASIC:
+                return "Basic Line Drawer driver";
+            case SPECIAL:
+                return "Special Line Drawer driver";
+            case DOTTED:
+                return "Dotted Line Drawer driver";
+        }
+
+        return "Cutom Line Drawer driver";
     }
 }

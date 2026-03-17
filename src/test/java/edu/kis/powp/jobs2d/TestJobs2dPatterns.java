@@ -44,6 +44,15 @@ public class TestJobs2dPatterns {
 		Job2dDriver testDriver = new DrawerAdapter();
 		DriverFeature.addDriver("Drawer Driver", testDriver);
 
+		Job2dDriver basicLineDriver = new LineDrawerAdapter(LineDrawerAdapter.LineType.BASIC);
+		DriverFeature.addDriver("Basic Line Driver", basicLineDriver);
+
+		Job2dDriver specialLineDriver = new LineDrawerAdapter(LineDrawerAdapter.LineType.SPECIAL);
+		DriverFeature.addDriver("Special Line Driver", specialLineDriver);
+
+		Job2dDriver dottedLineDriver = new LineDrawerAdapter(LineDrawerAdapter.LineType.DOTTED);
+		DriverFeature.addDriver("Dotted Line Driver", dottedLineDriver);
+
 		DriverFeature.updateDriverInfo();
 	}
 
