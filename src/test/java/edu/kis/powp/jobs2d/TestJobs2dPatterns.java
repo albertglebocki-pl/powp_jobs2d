@@ -40,6 +40,11 @@ public class TestJobs2dPatterns {
 			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
 			FiguresFactory.createFigureTriangle(driver, 100).execute();
 		});
+
+		application.addTest("Figure Semi-Circle", (ActionEvent e) -> {
+			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
+			FiguresFactory.createFigureSemiCircle(driver, 200).execute();
+		});
 	}
 
 	/**
