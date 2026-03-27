@@ -8,12 +8,14 @@ import java.util.logging.Logger;
 import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.jobs2d.command.ComplexCommand;
 import edu.kis.powp.jobs2d.drivers.adapter.DrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
 import edu.kis.powp.jobs2d.features.DriverFeature;
+import edu.kis.powp.jobs2d.figures.FigureBuilder;
 import edu.kis.powp.jobs2d.figures.FiguresFactory;
 
 public class TestJobs2dPatterns {
@@ -44,6 +46,24 @@ public class TestJobs2dPatterns {
 		application.addTest("Figure Semi-Circle", (ActionEvent e) -> {
 			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
 			FiguresFactory.createFigureSemiCircle(driver, 200).execute();
+		});
+
+		application.addTest("Figure Joe 1 (FigureBuilder)", (ActionEvent e) -> {
+			Job2dDriver driver = DriverFeature.getDriverManager().getCurrentDriver();
+			ComplexCommand figureJoe = new FigureBuilder(driver)
+					.moveTo(-120, -120)
+					.enableDrawing()
+					.moveTo(120, -120)
+					.moveTo(120, 120)
+					.moveTo(-120, 120)
+					.moveTo(-120, -120)
+					.moveTo(120, 120)
+					.disableDrawing()
+					.moveTo(120, -120)
+					.enableDrawing()
+					.moveTo(-120, 120)
+					.build();
+			figureJoe.execute();
 		});
 	}
 
